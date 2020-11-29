@@ -13,12 +13,17 @@ function usePlayer() {
     updateTrack();
     updateHistory();
     updateQueue();
+    return () => console.log(`usePlayer loaded`);
   }, []);
 
   async function updateTrack(): Promise<void> {
     setLoading(true);
     const newTrack = await getCurrentlyPlaying();
     setTrack(newTrack);
+    console.log(JSON.stringify(newTrack, null, 2));
+    console.log(`Progress total: ${newTrack.progressTotal}`);
+    console.log(`Progress elapsed: ${newTrack.progressElapsed}`);
+    console.log(`Progress left: ${newTrack.progressLeft}`);
     setLoading(false);
   }
 
@@ -36,7 +41,7 @@ function usePlayer() {
     setLoading(false);
   }
 
-  return { loading, track, history, queue, updateTrack, updateHistory, updateQueue };
+  return { track, history, queue, updateTrack, updateHistory, updateQueue };
 }
 
 export default usePlayer;

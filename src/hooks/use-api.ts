@@ -5,7 +5,6 @@ import { TrackResponse } from '../models/track-response.interface';
 function useApi() {
   async function getCurrentlyPlaying(): Promise<Track> {
     const response = await apiClient.get<TrackResponse>('?action=GetCurrentlyPlaying');
-    console.log('updateCurrentlyPlaying');
     return new Track(response.data);
   }
 
