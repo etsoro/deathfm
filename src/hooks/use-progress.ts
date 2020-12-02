@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Track } from '../models/track.model';
 
-function useProgress(track: Track) {
+export default function useProgress(track: Track) {
   const [total, setTotal] = useState(0);
   const [elapsed, setElapsed] = useState(0);
   const [left, setLeft] = useState(0);
@@ -47,5 +47,3 @@ function useProgress(track: Track) {
 
   return { progressText };
 }
-
-export default useProgress;

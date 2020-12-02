@@ -1,13 +1,14 @@
 import React from 'react';
 import { Track } from '../../models/track.model';
 import useProgress from '../../hooks/use-progress';
+import './progress-bar.scss';
 
-interface PropsType {
+interface Props {
   track: Track;
 }
 
 // TODO: Fix triple re-render
-function ProgressBar(props: PropsType) {
+export default function ProgressBar(props: Props) {
   const { progressText } = useProgress(props.track);
 
   return (
@@ -16,5 +17,3 @@ function ProgressBar(props: PropsType) {
     </div>
   );
 }
-
-export default ProgressBar;

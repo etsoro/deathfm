@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useApi from './use-api';
 import { Track } from '../models/track.model';
 
-function usePlayer() {
+export default function usePlayer() {
   const [loading, setLoading] = useState<boolean>(false);
   const [track, setTrack] = useState<Track | null>(null);
   const [history, setHistory] = useState<Track[]>([]);
@@ -43,5 +43,3 @@ function usePlayer() {
 
   return { track, history, queue, updateTrack, updateHistory, updateQueue };
 }
-
-export default usePlayer;

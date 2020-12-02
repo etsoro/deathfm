@@ -2,7 +2,7 @@ import { Track } from '../models/track.model';
 import { useEffect, useState } from 'react';
 import useApi from './use-api';
 
-function useTrack() {
+export default function useTrack() {
   const [track, setTrack] = useState<Track | null>(null);
 
   const { getCurrentlyPlaying } = useApi();
@@ -18,5 +18,3 @@ function useTrack() {
 
   return { track };
 }
-
-export default useTrack;

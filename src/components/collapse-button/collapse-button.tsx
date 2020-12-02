@@ -1,12 +1,10 @@
 import React from 'react';
-import './CollapseButton.scss';
+import './collapse-button.scss';
 
-function CollapseButton() {
+export default function CollapseButton() {
   return (
     <div className="collapse">
       <span className="line" />
     </div>
   );
 }
-
-export default CollapseButton;

@@ -1,11 +1,11 @@
 import React from 'react';
-import './Cover.scss';
+import './cover.scss';
 
-interface PropsType {
+interface Props {
   imageUrl: string;
 }
 
-function Cover(props: PropsType) {
+export default function Cover(props: Props) {
   return (
     <div className="cover">
       <img src={props.imageUrl} className="cover__background" alt="" />
@@ -13,5 +13,3 @@ function Cover(props: PropsType) {
     </div>
   );
 }
-
-export default Cover;

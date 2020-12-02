@@ -1,12 +1,10 @@
 import React from 'react';
-import Text from '../Text/Text';
+import Text from '../text/text';
 
-interface PropsType {
+interface Props {
   value: string;
 }
 
-function Artist(props: PropsType) {
+export default function Artist(props: Props) {
   return <Text value={props.value} size={18} color="rgba(255,255,255, 0.6)" />;
 }
-
-export default Artist;

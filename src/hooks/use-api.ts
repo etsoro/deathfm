@@ -1,8 +1,8 @@
-import { apiClient } from '../api';
+import { apiClient } from '../services/api';
 import { Track } from '../models/track.model';
 import { TrackResponse } from '../models/track-response.interface';
 
-function useApi() {
+export default function useApi() {
   async function getCurrentlyPlaying(): Promise<Track> {
     const response = await apiClient.get<TrackResponse>('?action=GetCurrentlyPlaying');
     return new Track(response.data);
@@ -20,5 +20,3 @@ function useApi() {
 
   return { getCurrentlyPlaying, getHistory, getQueue };
 }
-
-export default useApi;
