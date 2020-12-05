@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from '../../views/player';
+import Player from '../player';
 import './app.scss';
 
 export default function App() {

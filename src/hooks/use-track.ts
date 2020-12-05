@@ -13,8 +13,8 @@ export default function useTrack() {
 
   async function refreshCurrentlyPlaying(): Promise<void> {
     const newTrack = await getCurrentlyPlaying();
-    refreshProgress(newTrack);
     setTrack(newTrack);
+    refreshProgress(newTrack);
     waitForNextTrack(newTrack);
   }
 
@@ -29,7 +29,6 @@ export default function useTrack() {
   function waitForNextTrack(currentTrack: Track): void {
     const interval = setInterval(() => refreshProgress(), 1000);
     setTimeout(async () => {
-      console.log('progress finished, updating track');
       clearInterval(interval);
       await refreshCurrentlyPlaying();
     }, currentTrack.timeRemaining);

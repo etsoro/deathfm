@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function VolumeBar(props: Props) {
-  return <div>VolumeBar</div>;
+  return <div>Volume {props.value}</div>;
 }
