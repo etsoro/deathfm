@@ -10,9 +10,9 @@ export class Track {
   public startDate?: Date;
   public currentDate?: Date;
 
-  public progressTotal?: number;
-  public progressElapsed?: number;
-  public progressLeft?: number;
+  public timePlayed?: number;
+  public timeRemaining!: number;
+  public timeElapsed!: number;
 
   constructor(trackResponse: TrackResponse) {
     this.track = trackResponse.Track;
@@ -23,26 +23,12 @@ export class Track {
     this.listeners = trackResponse.ListenerCount ? parseInt(trackResponse.ListenerCount) : undefined;
     this.startDate = trackResponse.PlayStart ? new Date(trackResponse.PlayStart) : undefined;
     this.currentDate = trackResponse.SystemTime ? new Date(trackResponse.SystemTime) : undefined;
-
-    if (this.startDate && this.currentDate) this.initializeProgress();
+    this.initializeProgress();
   }
 
   private initializeProgress(): void {
-    this.progressTotal = Math.trunc(this.duration / 1000);
-    if (this.startDate && this.currentDate)
-      this.progressElapsed = (this.currentDate.getTime() - this.startDate.getTime()) / 1000;
-    else this.progressElapsed = 0;
-    this.progressLeft = this.progressTotal - this.progressElapsed;
-  }
-
-  public getDuration(unit: 'ms' | 'sec' | 'min' = 'sec'): number {
-    switch (unit) {
-      case 'ms':
-        return this.duration;
-      case 'sec':
-        return this.duration / 1000;
-      case 'min':
-        return this.duration / 1000 / 60;
-    }
+    if (this.startDate && this.currentDate) this.timePlayed = this.currentDate.getTime() - this.startDate.getTime();
+    this.timeRemaining = this.duration - (this.timePlayed || 0);
+    this.timeElapsed = this.duration - this.timeRemaining;
   }
 }

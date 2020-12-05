@@ -1,19 +1,19 @@
 import React from 'react';
-import { Track } from '../../models/track.model';
-import useProgress from '../../hooks/use-progress';
+import useFormatter from '../../hooks/use-formatter';
 import './progress-bar.scss';
 
 interface Props {
-  track: Track;
+  total: number;
+  elapsed: number;
+  remaining: number;
 }
 
-// TODO: Fix triple re-render
 export default function ProgressBar(props: Props) {
-  const { progressText } = useProgress(props.track);
+  const { formatMilliseconds } = useFormatter();
 
   return (
     <div>
-      {progressText.elapsed} / {progressText.total}
+      {formatMilliseconds(props.elapsed)} / {formatMilliseconds(props.total)}
     </div>
   );
 }
