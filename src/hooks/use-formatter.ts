@@ -7,8 +7,9 @@ export default function useFormatter() {
   }
 
   function formatMilliseconds(ms: number): string {
-    if (!ms) return `0:00`;
-    return formatSeconds(ms / 1000);
+    const minutes = Math.floor(ms / 1000 / 60);
+    const seconds = Math.round(ms / 1000) - minutes * 60;
+    return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   }
 
   return { formatSeconds, formatMilliseconds };

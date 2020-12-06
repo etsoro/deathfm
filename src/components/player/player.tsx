@@ -7,10 +7,12 @@ import ProgressBar from './progress-bar';
 import MediaButtons from './media-buttons/media-buttons';
 import VolumeBar from './volume-bar';
 import useTrack from '../../hooks/use-track';
+import usePlayer from '../../hooks/use-player';
 import './player.scss';
 
 export default function Player() {
   const { track, progress } = useTrack();
+  const { play, pause } = usePlayer();
 
   if (track)
     return (
@@ -26,7 +28,7 @@ export default function Player() {
             {track.artist}
           </BaseText>
           <ProgressBar total={progress.total} elapsed={progress.elapsed} remaining={progress.remaining} />
-          <MediaButtons />
+          <MediaButtons onPlay={play} onPause={pause} />
           <VolumeBar value={10} />
         </div>
       </>

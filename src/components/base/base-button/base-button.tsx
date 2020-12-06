@@ -1,11 +1,12 @@
 import React from 'react';
-import { PlayArrowRounded, StopRounded } from '@material-ui/icons';
+import { PlayCircleFilledRounded, PauseCircleFilledRounded } from '@material-ui/icons';
 import './base-button.scss';
 
 interface Props {
   children?: string | JSX.Element;
-  icon?: 'play' | 'stop';
+  icon?: 'play' | 'pause';
   size?: 'default' | 'small' | 'large';
+  onClick?: () => void;
 }
 
 export default function BaseButton(props: Props) {
@@ -24,17 +25,21 @@ export default function BaseButton(props: Props) {
   switch (props.icon) {
     case 'play':
       return (
-        <div className="button">
-          <PlayArrowRounded style={{ fontSize: iconSize }} />
+        <div className="button" onClick={props.onClick}>
+          <PlayCircleFilledRounded style={{ fontSize: iconSize }} />
         </div>
       );
-    case 'stop':
+    case 'pause':
       return (
-        <div className="button">
-          <StopRounded style={{ fontSize: iconSize }} />
+        <div className="button" onClick={props.onClick}>
+          <PauseCircleFilledRounded style={{ fontSize: iconSize }} />
         </div>
       );
     default:
-      return <div className="button">{props.children}</div>;
+      return (
+        <div className="button" onClick={props.onClick}>
+          {props.children}
+        </div>
+      );
   }
 }

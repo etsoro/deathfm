@@ -34,5 +34,5 @@ export default function useTrack() {
     }, currentTrack.timeRemaining);
   }
 
-  return { track, progress };
+  return { track, progress, refreshCurrentlyPlaying };
 }
