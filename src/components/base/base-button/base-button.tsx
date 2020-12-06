@@ -1,25 +1,30 @@
 import React from 'react';
-import { PlayCircleFilledRounded, PauseCircleFilledRounded } from '@material-ui/icons';
+import {
+  PlayCircleFilledRounded,
+  PauseCircleFilledRounded,
+  SkipNextRounded,
+  SkipPreviousRounded
+} from '@material-ui/icons';
 import './base-button.scss';
 
 interface Props {
   children?: string | JSX.Element;
-  icon?: 'play' | 'pause';
+  icon?: 'play' | 'pause' | 'previous' | 'next';
   size?: 'default' | 'small' | 'large';
   onClick?: () => void;
 }
 
 export default function BaseButton(props: Props) {
-  let iconSize = 80;
+  let iconSize: number;
   switch (props.size) {
     case 'small':
-      iconSize = 60;
+      iconSize = 45;
       break;
     case 'large':
-      iconSize = 100;
+      iconSize = 110;
       break;
     default:
-      iconSize = 80;
+      iconSize = 75;
   }
 
   switch (props.icon) {
@@ -33,6 +38,18 @@ export default function BaseButton(props: Props) {
       return (
         <div className="button" onClick={props.onClick}>
           <PauseCircleFilledRounded style={{ fontSize: iconSize }} />
+        </div>
+      );
+    case 'previous':
+      return (
+        <div className="button" onClick={props.onClick}>
+          <SkipPreviousRounded style={{ fontSize: iconSize }} />
+        </div>
+      );
+    case 'next':
+      return (
+        <div className="button" onClick={props.onClick}>
+          <SkipNextRounded style={{ fontSize: iconSize }} />
         </div>
       );
     default:

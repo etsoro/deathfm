@@ -10,7 +10,7 @@ interface Props {
 
 export default function ProgressBar(props: Props) {
   const { formatMilliseconds } = useFormatter();
-  const [rightProgressType, setRightProgressType] = useState<'total' | 'remaining'>('total');
+  const [rightProgressType, setRightProgressType] = useState<'total' | 'remaining'>('remaining');
 
   function switchRightProgressType() {
     setRightProgressType(rightProgressType === 'total' ? 'remaining' : 'total');

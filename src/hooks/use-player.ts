@@ -66,5 +66,5 @@ export default function usePlayer() {
     }
   }
 
-  return { play, pause, switchMute, setVolume };
+  return { isPlaying, play, pause, switchMute, setVolume };
 }

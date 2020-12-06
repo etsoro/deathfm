@@ -1,6 +1,5 @@
 import React from 'react';
 import Background from './background';
-import CollapseButton from './collapse-button';
 import Cover from './cover';
 import BaseText from '../base/base-text';
 import ProgressBar from './progress-bar';
@@ -12,19 +11,21 @@ import './player.scss';
 
 export default function Player() {
   const { track, progress } = useTrack();
-  const { play, pause } = usePlayer();
+  const { play, pause, isPlaying } = usePlayer();
 
   if (track)
     return (
       <>
         <Background url={track.cover} />
         <div className="player">
-          <CollapseButton />
-          <Cover imageUrl={track.cover} />
-          <BaseText size={20} bottom={6}>
+          <BaseText size={14} weight={500} opacity={0.9} center>
+            {track.album}
+          </BaseText>
+          <Cover imageUrl={track.cover} active={isPlaying} />
+          <BaseText size={20} weight={600}>
             {track.track}
           </BaseText>
-          <BaseText size={18} opacity={0.6} bottom={15}>
+          <BaseText size={20} weight={400} opacity={0.6} bottom={15}>
             {track.artist}
           </BaseText>
           <ProgressBar total={progress.total} elapsed={progress.elapsed} remaining={progress.remaining} />

@@ -10,7 +10,7 @@ interface Props {
 export default function MediaButtons(props: Props) {
   const [buttonType, setButtonType] = useState<'play' | 'pause'>('play');
 
-  function onClick() {
+  function togglePlaying() {
     setButtonType((prevValue) => (prevValue === 'pause' ? 'play' : 'pause'));
     switch (buttonType) {
       case 'play':
@@ -26,7 +26,9 @@ export default function MediaButtons(props: Props) {
 
   return (
     <div className="media-buttons">
-      <BaseButton icon={buttonType} size="default" onClick={onClick} />
+      <BaseButton icon="previous" size="small" />
+      <BaseButton icon={buttonType} size="default" onClick={togglePlaying} />
+      <BaseButton icon="next" size="small" />
     </div>
   );
 }
