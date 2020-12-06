@@ -1,0 +1,16 @@
+.progress {
+  &__line {
+    height: 3px;
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+  }
+  &__labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+  &__right {
+    cursor: pointer;
+  }
+}
