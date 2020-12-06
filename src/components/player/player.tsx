@@ -21,15 +21,15 @@ export default function Player() {
         <div className="player">
           <CollapseButton />
           <Cover imageUrl={track.cover} />
-          <BaseText size={20} bottom={4}>
+          <BaseText size={20} bottom={6}>
             {track.track}
           </BaseText>
-          <BaseText size={18} opacity={0.6} bottom={10}>
+          <BaseText size={18} opacity={0.6} bottom={15}>
             {track.artist}
           </BaseText>
           <ProgressBar total={progress.total} elapsed={progress.elapsed} remaining={progress.remaining} />
           <MediaButtons onPlay={play} onPause={pause} />
-          <VolumeBar value={10} />
+          {/*<VolumeBar value={10} />*/}
         </div>
       </>
     );
