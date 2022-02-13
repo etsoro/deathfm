@@ -1,0 +1,14 @@
+.cover {
+  width: 220px;
+  height: 220px;
+  margin: 65px 0 75px;
+  align-self: center;
+  object-fit: contain;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: 0.47s;
+  &.active {
+    transform: scale(1.45);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  }
+}

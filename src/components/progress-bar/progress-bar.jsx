@@ -1,24 +1,19 @@
-import React, { useState } from 'react';
-import useFormatter from '../../../hooks/use-formatter';
+import { useState } from 'react';
 import './progress-bar.scss';
+import { formatMilliseconds } from '../../utilities/formatters';
 
-interface Props {
-  total: number;
-  elapsed: number;
-  remaining: number;
-}
+function ProgressBar(props) {
+  const [rightProgressType, setRightProgressType] = useState('remaining');
 
-export default function ProgressBar(props: Props) {
-  const { formatMilliseconds } = useFormatter();
-  const [rightProgressType, setRightProgressType] = useState<'total' | 'remaining'>('remaining');
-
-  function switchRightProgressType() {
+  const switchRightProgressType = () => {
     setRightProgressType(rightProgressType === 'total' ? 'remaining' : 'total');
-  }
+  };
 
   return (
     <div className="progress">
-      <div className="progress__line" />
+      <div className="progress__line">
+        <div className="subline" style={{ width: props.elapsedPercentage + '%' }} />
+      </div>
       <div className="progress__labels">
         <div className="progress__left">{formatMilliseconds(props.elapsed)}</div>
         <div className="progress__right" onClick={switchRightProgressType}>
@@ -29,3 +24,5 @@ export default function ProgressBar(props: Props) {
     </div>
   );
 }
+
+export { ProgressBar };
