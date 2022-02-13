@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useTrack } from './use-track';
 
 const usePlayer = () => {
-  const player = useRef(new Audio());
+  const audio = useRef(new Audio());
   const streams = useRef(['http://hi5.death.fm/;', 'http://hi.death.fm/;']);
   const [volume, setVolume] = useState(0.5);
   const [isPlaying, setPlaying] = useState(false);
@@ -18,8 +18,8 @@ const usePlayer = () => {
   const play = async () => {
     if (!isPlaying) {
       setPlaying(true);
-      player.current.load();
-      await player.current.play();
+      audio.current.load();
+      await audio.current.play();
       await refreshCurrentlyPlaying();
     }
   };
@@ -27,7 +27,7 @@ const usePlayer = () => {
   const pause = () => {
     if (isPlaying) {
       setPlaying(false);
-      player.current.pause();
+      audio.current.pause();
     }
   };
 
@@ -36,14 +36,14 @@ const usePlayer = () => {
   };
 
   const initializePlayer = (streamUrl) => {
-    if (player.current.canPlayType('audio/mpeg')) {
-      player.current.src = streamUrl;
-      player.current.preload = 'none';
-      player.current.volume = volume;
+    if (audio.current.canPlayType('audio/mpeg')) {
+      audio.current.src = streamUrl;
+      audio.current.preload = 'none';
+      audio.current.volume = volume;
     }
-    player.current.addEventListener('waiting', onPlayerBuffering);
-    player.current.addEventListener('playing', onPlayerPlaying);
-    player.current.addEventListener('error', onPlayerError);
+    audio.current.addEventListener('waiting', onPlayerBuffering);
+    audio.current.addEventListener('playing', onPlayerPlaying);
+    audio.current.addEventListener('error', onPlayerError);
   };
 
   const onPlayerBuffering = () => {
@@ -58,7 +58,7 @@ const usePlayer = () => {
   const onPlayerError = () => {
     const nextStreamUrl = streams.current.shift();
     if (nextStreamUrl) {
-      console.warn(`Failed to play ${player.current.src}, trying again with ${nextStreamUrl}`);
+      console.warn(`Failed to play ${audio.current.src}, trying again with ${nextStreamUrl}`);
       initializePlayer(nextStreamUrl);
     } else {
       setPlaying(false);

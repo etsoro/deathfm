@@ -4,11 +4,12 @@ import './media-buttons.scss';
 function MediaButtons({ onPlay, onPause }) {
   const [buttonType, setButtonType] = useState('play');
 
-  function togglePlaying() {
-    setButtonType((prevValue) => (prevValue === 'pause' ? 'play' : 'pause'));
+  const togglePlaying = async () => {
+    const prevButtonType = buttonType;
+    setButtonType('loading');
     switch (buttonType) {
       case 'play':
-        if (onPlay) onPlay();
+        if (onPlay) await onPlay();
         break;
       case 'pause':
         if (onPause) onPause();
@@ -16,7 +17,8 @@ function MediaButtons({ onPlay, onPause }) {
       default:
         break;
     }
-  }
+    setButtonType(prevButtonType === 'pause' ? 'play' : 'pause');
+  };
 
   return (
     <div className="media-buttons">
