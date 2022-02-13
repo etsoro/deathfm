@@ -1,0 +1,9 @@
+{
+  "env": { "es2021": true, "node": true },
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "parserOptions": { "ecmaVersion": 2021 },
+  "rules": {
+    "arrow-parens": ["error", "always"],
+    "no-unused-vars": "warn"
+  }
+}
