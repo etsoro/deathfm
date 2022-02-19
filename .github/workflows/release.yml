@@ -27,7 +27,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Deploy
-        run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . root@31.172.66.189:/var/www/metalisten.ru/html/
+        run: cd build && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . root@31.172.66.189:/var/www/metalisten.ru/html/
 
       - name: Set package version
         run: |
