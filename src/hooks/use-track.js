@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { getCurrentlyPlaying } from '../api/actions.api';
 
 const useTrack = () => {
-  console.log('usetrack');
   const [track, setTrack] = useState(null);
   const [progress, setProgress] = useState({
     total: 0,
@@ -11,14 +10,11 @@ const useTrack = () => {
     elapsedPercentage: 0,
   });
 
-  console.log('before useffect');
   useEffect(() => {
-    console.log('useffect');
     refreshCurrentlyPlaying();
   }, []);
 
   const refreshCurrentlyPlaying = async () => {
-    console.log('refreshCurrentlyPlaying()');
     const newTrack = await getCurrentlyPlaying();
     setTrack(newTrack);
     refreshProgress(newTrack);

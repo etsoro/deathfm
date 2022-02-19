@@ -1,8 +1,12 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 import './background.scss';
 
-function Background({ url }) {
+const Background = ({ url }) => {
   return <img className="background" src={url} alt="" />;
-}
+};
+
+Background.propTypes = {
+  url: PropTypes.string,
+};
 
 export { Background };

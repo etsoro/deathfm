@@ -6,7 +6,7 @@ import { Cover } from '../cover';
 import { ProgressBar } from '../progress-bar';
 import { MediaButtons } from '../media-buttons';
 
-function App() {
+const App = () => {
   const { track, progress } = useTrack();
   const { play, pause, isPlaying } = usePlayer();
 
@@ -31,6 +31,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export { App };

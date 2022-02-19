@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import './media-buttons.scss';
 
-function MediaButtons({ onPlay, onPause }) {
+const MediaButtons = ({ onPlay, onPause }) => {
   const [buttonType, setButtonType] = useState('play');
 
   const togglePlaying = async () => {
@@ -27,6 +28,11 @@ function MediaButtons({ onPlay, onPause }) {
       <div>next</div>
     </div>
   );
-}
+};
+
+MediaButtons.propTypes = {
+  onPlay: PropTypes.func,
+  onPause: PropTypes.func,
+};
 
 export { MediaButtons };

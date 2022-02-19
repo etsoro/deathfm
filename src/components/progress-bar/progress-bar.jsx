@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './progress-bar.scss';
 import { formatMilliseconds } from '../../utilities/formatters';
 
@@ -24,5 +25,10 @@ function ProgressBar(props) {
     </div>
   );
 }
+
+ProgressBar.propTypes = {
+  elapsedPercentage: PropTypes.number,
+  elapsed: PropTypes.number,
+};
 
 export { ProgressBar };
