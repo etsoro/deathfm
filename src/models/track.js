@@ -1,12 +1,14 @@
+import { decodeHtml } from '../utilities/decode';
+
 class Track {
   timePlayed;
   timeRemaining;
   timeElapsed;
 
   constructor(trackResponse) {
-    this.track = trackResponse.Track;
-    this.album = trackResponse.Album;
-    this.artist = trackResponse.Artist;
+    this.track = decodeHtml(trackResponse.Track);
+    this.album = decodeHtml(trackResponse.Album);
+    this.artist = decodeHtml(trackResponse.Artist);
     this.cover = trackResponse.CoverLink.replace(`/cover`, `/cover/500`);
     this.altCover = trackResponse.CoverLink;
     this.duration = parseInt(trackResponse.Length);
