@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getCurrentlyPlaying } from '../services/api';
+import { getCurrentlyPlaying } from '../api/actions.api';
 
 const useTrack = () => {
   console.log('usetrack');

@@ -8,4 +8,4 @@ const fetch = async (url, options) => {
   return http.request({ url, ...options });
 };
 
-export { http, fetch };
+export { fetch };

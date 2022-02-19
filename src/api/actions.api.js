@@ -1,4 +1,4 @@
-import { fetch } from './http';
+import { fetch } from './fetch';
 import { Track } from '../models/track';
 
 const getCurrentlyPlaying = async () => {
