@@ -8,6 +8,7 @@ class Track {
     this.album = trackResponse.Album;
     this.artist = trackResponse.Artist;
     this.cover = trackResponse.CoverLink.replace(`/cover`, `/cover/500`);
+    this.altCover = trackResponse.CoverLink;
     this.duration = parseInt(trackResponse.Length);
     this.listeners = trackResponse.ListenerCount
       ? parseInt(trackResponse.ListenerCount)

@@ -1,31 +1,28 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './media-buttons.scss';
+import { ReactComponent as PlayIcon } from '../../assets/icons/play.svg';
+import { ReactComponent as PauseIcon } from '../../assets/icons/pause.svg';
 
 const MediaButtons = ({ onPlay, onPause }) => {
   const [buttonType, setButtonType] = useState('play');
 
   const togglePlaying = async () => {
-    const prevButtonType = buttonType;
-    setButtonType('loading');
-    switch (buttonType) {
-      case 'play':
-        if (onPlay) await onPlay();
-        break;
-      case 'pause':
-        if (onPause) onPause();
-        break;
-      default:
-        break;
+    setButtonType((prevButtonType) => (prevButtonType === 'pause' ? 'play' : 'pause'));
+    try {
+      if (buttonType === 'play') await onPlay();
+      if (buttonType === 'pause') await onPause();
+    } catch (e) {
+      setButtonType('play');
     }
-    setButtonType(prevButtonType === 'pause' ? 'play' : 'pause');
   };
 
   return (
     <div className="media-buttons">
-      <div>prev</div>
-      <div onClick={togglePlaying}>play</div>
-      <div>next</div>
+      <div className="button middle" onClick={togglePlaying}>
+        {buttonType === 'play' && <PlayIcon width={40} height={40} fill="#e9e9e9" />}
+        {buttonType === 'pause' && <PauseIcon width={40} height={40} fill="#e9e9e9" />}
+      </div>
     </div>
   );
 };
