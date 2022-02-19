@@ -19,13 +19,13 @@ const App = () => {
         <Cover url={track.cover} alt={track.altCover} />
         <div className="track">{track.track}</div>
         <div className="artist_album">{`${track.artist} — ${track.album}`}</div>
-        <MediaButtons onPlay={play} onPause={pause} />
         <ProgressBar
           total={progress.total}
           elapsed={progress.elapsed}
           elapsedPercentage={progress.elapsedPercentage}
           remaining={progress.remaining}
         />
+        <MediaButtons onPlay={play} onPause={pause} />
       </div>
     </div>
   );

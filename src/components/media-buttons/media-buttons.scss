@@ -1,19 +1,16 @@
 .media-buttons {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
   .button {
+    cursor: pointer;
     display: flex;
-    padding: 5px;
-    border-radius: 30px;
-    transition: background 0.5s, transform 0.3s;
-    transform: scale(1);
-    background-position: center;
-    &:active {
-      transform: scale(0.9);
-      background-color: rgba(255, 255, 255, 0.05);
-      background-size: 100%;
+    border-radius: 60px;
+    margin: 0 5px;
+    &.left,
+    &.right {
+      padding: 10px;
     }
   }
 }
