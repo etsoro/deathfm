@@ -7,7 +7,7 @@ class Track {
     this.track = trackResponse.Track;
     this.album = trackResponse.Album;
     this.artist = trackResponse.Artist;
-    this.cover = trackResponse.CoverLink;
+    this.cover = trackResponse.CoverLink.replace(`/cover`, `/cover/500`);
     this.duration = parseInt(trackResponse.Length);
     this.listeners = trackResponse.ListenerCount
       ? parseInt(trackResponse.ListenerCount)
