@@ -66,7 +66,7 @@ const usePlayer = () => {
     }
   };
 
-  return { isPlaying, play, pause, switchMute, setVolume };
+  return { isPlaying, isBuffering, isMuted, isError, play, pause, switchMute, setVolume };
 };
 
 export { usePlayer };
