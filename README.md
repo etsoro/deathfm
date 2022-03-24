@@ -1,6 +1,6 @@
-# Metalisten
+# MetalStream
 
-Alternative web player for [Death.FM](http://death.fm/ng-apps/web-player/24SevenPlayer.html).
+Alternative web player for [Death.FM](http://death.fm/ng-apps/web-player/24SevenPlayer.html) radio.
 
 ## Available Scripts
 
